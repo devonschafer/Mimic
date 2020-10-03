@@ -8,7 +8,7 @@ sh install_modules.sh
 This will install guizero, mouse, keyboard, upgrade pip, and install git.
 
 With git installed all you have to do to install Mimic is type
-git clone https://github.com/devonschafer/Mimic
+git clone https://github.com/devonschafer/Mimic.git
 in your linux terminal
 
 To run Mimic, go to the directory where it exists and type
