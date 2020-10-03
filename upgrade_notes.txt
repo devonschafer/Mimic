@@ -1,0 +1,7 @@
+Add editable hotkeys for Controls.
+
+Eventually make a save feature that also takes a screenshot of what you are doing  so you can remember how to setup your screen for the same mouse positions.
+
+Maybe add a keyboard macro option.
+
+

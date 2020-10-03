@@ -1,0 +1,5 @@
+@echo off
+pip3 insall guizero
+pip3 install mouse
+pip3 install keyboard
+pip3 install pyautogui
