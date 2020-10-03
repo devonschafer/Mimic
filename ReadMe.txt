@@ -8,7 +8,7 @@ I made this originally for game botting, but it can be used for whatever.
 
 Current Mimic version is displayed on the title bar of the window.
 For new versions go to:
-https://github.com/devonschafer/Mimic_versions
+https://github.com/devonschafer/Mimic
 
 I have slightly automated scripts in the respective folders for your OS version to help with the python
 modules that are required.
