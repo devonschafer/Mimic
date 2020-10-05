@@ -1,6 +1,6 @@
 readme.txt
 For new versions go to:
-https://github.com/devonschafer/Mimic_versions
+https://github.com/devonschafer/Mimic
 This is an open source program
 Current version is displayed on the title bar.
 

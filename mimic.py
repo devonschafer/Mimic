@@ -19,9 +19,9 @@ blue = 50, 115, 255
 red = 255, 0, 0
 
 #properties
-appwidth = 780
+appwidth = 820
 appheight = 340
-windowwidth = 780
+windowwidth = 740
 windowheight = 340
 textsize = 14
 textcolor = blue
@@ -33,6 +33,7 @@ userinputheight = 306
 textboxwidth = 50
 textboxheight = 20
 editlinewidth = 10
+bg = black
 
 side = []
 xx = []
@@ -60,67 +61,98 @@ def start_record():
     elif record.text == 'Stop Recording':
         record.text = 'Record'
         mili_seconds.value = 0
+        seconds.value = 0
         record.bg = dark_grey
 
 def delete_one():
-    selected = user_entry.value
-    user_entry.remove(selected)
-    entry_box.remove(selected)
+    if user_entry.value != None:
+        selected = user_entry.value
+        a = user_entry.items
+        line = a.index(selected)
+        user_entry.remove(selected)
+        entry_box.remove(selected)
+        side.pop(line)
+        xx.pop(line)
+        yy.pop(line)
+        mm.pop(line)
+        list_count.value = len(user_entry.items)
+    else:
+        None
 
 def clear_all():
     user_entry.clear()
+    entry_box.clear()
     side.clear()
     xx.clear()
     yy.clear()
     mm.clear()
-    entry_box.clear()
-
+    list_count.value = len(user_entry.items)
+    
 def edit():
     edit_window.show()
+    edit_side.clear()
+    edit_xx.clear()
+    edit_yy.clear()
+    edit_mm.clear()
 
 def edit_selected():
-    selected = entry_box.value
-    a = entry_box.items
-    line = a.index(selected)
-    edit_side.value = side[line]
-    edit_xx.value = xx[line]
-    edit_yy.value = yy[line]
-    edit_mm.value = mm[line]
+    if entry_box.value != None:
+        selected = entry_box.value
+        a = entry_box.items
+        line = a.index(selected)
+        edit_side.value = side[line]
+        edit_xx.value = xx[line]
+        edit_yy.value = yy[line]
+        edit_mm.value = mm[line]
+    else:
+        None
 
 def refresh():
-    selected = entry_box.value
-    a = entry_box.items
-    line = a.index(selected)
-    side.pop(line)
-    xx.pop(line)
-    yy.pop(line)
-    mm.pop(line)
-    side.insert(line, edit_side.value)
-    xx.insert(line, int(edit_xx.value))
-    yy.insert(line, int(edit_yy.value))
-    mm.insert(line, float(edit_mm.value))
-    entry_box.clear()
-    for a in range(len(side)):
-        entry_box.append('c:%s x:%s y:%s t:%s' % (side[a], xx[a], yy[a], mm[a]))
+    if entry_box.value != None:
+        selected = entry_box.value
+        a = entry_box.items
+        line = a.index(selected)
+        side.pop(line)
+        xx.pop(line)
+        yy.pop(line)
+        mm.pop(line)
+        side.insert(line, edit_side.value)
+        xx.insert(line, int(edit_xx.value))
+        yy.insert(line, int(edit_yy.value))
+        mm.insert(line, float(edit_mm.value))
+        entry_box.clear()
+        user_entry.clear()
+        edit_side.clear()
+        edit_xx.clear()
+        edit_yy.clear()
+        edit_mm.clear()
+        for a in range(len(side)):
+            user_entry.append('c:%s x:%s y:%s t:%s' % (side[a], xx[a], yy[a], mm[a]))
+            entry_box.append('c:%s x:%s y:%s t:%s' % (side[a], xx[a], yy[a], mm[a]))
+    else:
+        None
     
 def done_edit():
-    selected = entry_box.value
-    a = entry_box.items
-    line = a.index(selected)
-    side.pop(line)
-    xx.pop(line)
-    yy.pop(line)
-    mm.pop(line)
-    side.insert(line, edit_side.value)
-    xx.insert(line, int(edit_xx.value))
-    yy.insert(line, int(edit_yy.value))
-    mm.insert(line, float(edit_mm.value))
-    user_entry.clear()
-    entry_box.clear()
-    for a in range(len(side)):
-        user_entry.append('c:%s x:%s y:%s t:%s' % (side[a], xx[a], yy[a], mm[a]))
-        entry_box.append('c:%s x:%s y:%s t:%s' % (side[a], xx[a], yy[a], mm[a]))
-    edit_window.hide()
+    if entry_box.value != None:
+        selected = entry_box.value
+        a = entry_box.items
+        line = a.index(selected)
+        side.pop(line)
+        xx.pop(line)
+        yy.pop(line)
+        mm.pop(line)
+        side.insert(line, edit_side.value)
+        xx.insert(line, int(edit_xx.value))
+        yy.insert(line, int(edit_yy.value))
+        mm.insert(line, float(edit_mm.value))
+        user_entry.clear()
+        entry_box.clear()
+        for a in range(len(side)):
+            user_entry.append('c:%s x:%s y:%s t:%s' % (side[a], xx[a], yy[a], mm[a]))
+            entry_box.append('c:%s x:%s y:%s t:%s' % (side[a], xx[a], yy[a], mm[a]))
+        edit_window.hide()
+    else:
+        edit_window.hide()
     
 def mimic_record():
     m = mili_seconds.value
@@ -137,6 +169,7 @@ def mimic_record():
             xx.append(x)
             yy.append(y)
             mm.append('%s.%s' % (s, m))
+            list_count.value = len(user_entry.items)
         elif mouse.is_pressed('right') == True:
             x, y = pyautogui.position()
             r = 'right'
@@ -148,8 +181,10 @@ def mimic_record():
             xx.append(x)
             yy.append(y)
             mm.append('%s.%s' % (s, m))
+            list_count.value = len(user_entry.items)
         elif keyboard.is_pressed('e'):
             mili_seconds.value = 0
+            seconds.value = 0
             record.text = 'Record'
             record.bg = dark_grey
     else:
@@ -190,12 +225,15 @@ def mimic_begin():
 main = App(title='Mimic V 1.0', width=appwidth, height=appheight, layout='grid', bg=black)
 
 #second window stuff------------------------------------------------------------------------------------------
-edit_window = Window(main, title='Edit Line', width=windowwidth, height=windowheight, layout='grid', bg=black)
+edit_window = Window(main, title='Edit Line', width=windowwidth, height=windowheight, layout='grid', bg=bg)
 edit_window.hide()
 
-edit_box0 = Box(edit_window, layout='grid', grid=[0,0], border=10, align='top')
-edit_box1 = Box(edit_window, layout='grid', grid=[1,0], border=10, align='top')
-edit_box2 = Box(edit_window, layout='grid', grid=[2,0], border=10, align='top')
+edit_box0 = Box(edit_window, layout='grid', grid=[0,0], border=True, align='top')
+edit_box0.set_border(10, color=bg)
+edit_box1 = Box(edit_window, layout='grid', grid=[1,0], border=True, align='top')
+edit_box1.set_border(10, color=bg)
+edit_box2 = Box(edit_window, layout='grid', grid=[2,0], border=True, align='top')
+edit_box2.set_border(10, color=bg)
 
 edit_button = PushButton(edit_box0, text='Edit', command=edit_selected, width=buttonwidth, height=buttonheight, grid=[0,0])
 edit_button.bg = dark_grey
@@ -236,11 +274,16 @@ edit_mm.bg = off_white
 
 #-------------------------------------------------------------------------------------------------------------
 
-box0 = Box(main, layout='grid', grid=[0,0], border=10, align='top')
-box01 = Box(box0, layout='grid', grid=[0,1], border=10, align='top')
-box1 = Box(box0, layout='grid', grid=[0,2], border=10, align='top')
-box2 = Box(main, layout='grid', grid=[1,0], border=10, align='top')
-box3 = Box(main, layout='grid', grid=[2,0], border=10, align='top')
+box0 = Box(main, layout='grid', grid=[0,0], border=True, align='top')
+box0.set_border(10, color=bg)
+box01 = Box(box0, layout='grid', grid=[0,1], border=True, align='top')
+box01.set_border(10, color=bg)
+box1 = Box(box0, layout='grid', grid=[0,2], border=True, align='top')
+box1.set_border(10, color=bg)
+box2 = Box(main, layout='grid', grid=[1,0], border=True, align='top')
+box2.set_border(10, color=bg)
+box3 = Box(main, layout='grid', grid=[2,0], border=True, align='top')
+box3.set_border(10, color=bg)
 
 help_banner = Text(box0, text='Welcome to Mimic', size=textsize, color=textcolor, font=font, grid=[0,0])
 help_banner.repeat(100, mimic_record)
@@ -273,6 +316,8 @@ start_stop.text_color = off_white
 
 user_entry = ListBox(box2, items=[], command=None, width=userinputwidth, height=userinputheight, grid=[0,0])
 user_entry.bg = off_white
+
+list_count = Text(box2, text='0', size=textsize, color=textcolor, font=font, grid=[1,0], align='bottom')
 
 readme = TextBox(box3, text='', command=None, multiline=True, scrollbar=True, width=textboxwidth, height=textboxheight, grid=[0,0])
 readme.bg = off_white

@@ -4,4 +4,8 @@ Eventually make a save feature that also takes a screenshot of what you are doin
 
 Maybe add a keyboard macro option.
 
+Add a textbox to show current line. On bottom of user_entry
+
+Bugs:
+
 
