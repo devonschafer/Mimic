@@ -222,7 +222,7 @@ def mimic_begin():
     else:
         None
 
-main = App(title='Mimic V 1.0', width=appwidth, height=appheight, layout='grid', bg=black)
+main = App(title='Mimic V 1.1', width=appwidth, height=appheight, layout='grid', bg=black)
 
 #second window stuff------------------------------------------------------------------------------------------
 edit_window = Window(main, title='Edit Line', width=windowwidth, height=windowheight, layout='grid', bg=bg)
