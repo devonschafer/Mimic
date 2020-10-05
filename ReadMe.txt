@@ -7,6 +7,7 @@ Mimic performs automated mouse movements for you after you record what you want 
 I made this originally for game botting, but it can be used for whatever.
 
 Current Mimic version is displayed on the title bar of the window.
+Version work by: V(Major).(Minor) ex. v1.1
 For new versions go to:
 https://github.com/devonschafer/Mimic
 
