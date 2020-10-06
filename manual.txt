@@ -1,0 +1,38 @@
+Manual for Mimic
+
+Controls:
+Press 'e' to stop the recording session
+Press 'r' to stop the automated macro session
+
+Main Window:
+The red double zeros (0 0) is the timer for user clicks. (seconds, milliseconds). The timer only goes to five minutes in seconds.
+
+'Edit' button opens the Edit Window.
+'Delete One' button removes the selected line from the list. Must select line to remove line.
+'Clear All' button removes all lines from list. Do not need to select any line.
+'Record' button starts the mouse recording session. Will see timer start.
+'Start' button starts the automated macro session on a endless loop. Press 'r' to stop session. Session will stop when all lines have been looped through.
+
+The box in the middle is a listbox and displays all the lines you want.
+This box can be scrolled in with your mouse scroll wheel.
+To the bottom right of the listbox there is a blue number. This number shows how many lines are populated in your listbox.
+
+The box on the far right is a textbox and can also be scrolled in with your mouse scroll wheel.
+This textbox displays helpful information.
+
+
+Edit Window:
+'Edit' button allows the user to edit each component of a line.
+(left or right, reffers to mouse buttons)
+(x coordinate)
+(y corrdinate)
+(time)
+To edit, select a line and click 'Edit' button. This will populate the line in the four textboxes to the right. Remember that left and right should be lower case. The time is in seconds and milliseconds.
+
+'Refresh' button allows user to edit multiple lines without the need to close and reopen Edit Window.
+'Done' button completes changes and closes the Edit Window.
+'Pixel Tolerance' the user can input a whole number to specify how many pixels to offset cursor, from zero to user input.
+
+'Time tolerance' the user can input a float or decimal to specify an added amount of time to the time already in the line from zero to user input.
+
+
