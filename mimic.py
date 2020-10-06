@@ -41,7 +41,7 @@ yy = []
 mm = []
 
 def openreadme():
-    openFile = open('in_game_readme.txt', 'r')
+    openFile = open('in_app_readme.txt', 'r')
     readme.value = openFile.read()
     openFile.close()
 
