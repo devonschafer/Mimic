@@ -10,6 +10,7 @@ Current Mimic version is displayed on the title bar of the window.
 Version work by: V(Major).(Minor) ex. v1.1
 For new versions go to:
 https://github.com/devonschafer/Mimic
+https://github.com/devonschafer/Mimic.git
 
 I have slightly automated scripts in the respective folders for your OS version to help with the python
 modules that are required.
