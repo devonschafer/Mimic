@@ -1,5 +1,10 @@
 @echo off
+python -m pip install --upgrade pip
+pip install guizero
 pip3 insall guizero
+pip install mouse
 pip3 install mouse
+pip install keyboard
 pip3 install keyboard
+pip install pyautogui
 pip3 install pyautogui
